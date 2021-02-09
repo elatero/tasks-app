@@ -1,0 +1,23 @@
+@import 'assets/scss/abstracts/variables';
+@import 'assets/scss/layout/grid';
+
+.footer {
+  width: 100%;
+  background-color: $background-secondary;
+
+  .container {
+    @extend %container;
+
+    .inner {
+      min-height: 8rem;
+      display: flex;
+      align-items: center;
+      color: $color-gray-dark;
+
+      .link {
+        margin-right: 1rem;
+        border-bottom: 1px dotted $color-gray-dark;
+      }
+    }
+  }
+}

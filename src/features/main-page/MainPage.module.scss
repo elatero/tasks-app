@@ -1,0 +1,25 @@
+@import 'assets/scss/abstracts/variables';
+@import 'assets/scss/layout/grid';
+
+.wrapper {
+  width: 100%;
+  flex: 1;
+
+  .container {
+    @extend %container;
+    height: 100%;
+
+    .inner {
+      height: 100%;
+      background-color: $color-white;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+
+      .panel {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}
