@@ -1,0 +1,68 @@
+@import 'assets/scss/abstracts/variables';
+@import 'assets/scss/base/utilities';
+@import 'assets/scss/layout/grid';
+
+.task {
+  display: flex;
+  width: 100%;
+  border: $border-color-primary;
+  border-radius: 3px;
+  min-height: 12rem;
+  font-size: 1.4rem;
+
+  & > *:not(:last-of-type) {
+    border-right: $border-color-primary;
+  }
+
+  &:not(:last-of-type) {
+    margin-bottom: 1rem;
+  }
+
+  .number {
+    flex-basis: 5%;
+    text-align: center;
+    @extend %full-flex-center;
+  }
+
+  .description {
+    flex-basis: 35%;
+    padding: 0.8rem;
+    @extend %full-flex-center;
+  }
+
+  .author,
+  .email {
+    flex-basis: 15%;
+    @extend %full-flex-center;
+    padding: 0.8rem;
+
+    & > span {
+      margin-left: 0.5rem;
+      color: $color-gray-dark;
+      border-bottom: 1px dotted $color-gray-light;
+    }
+  }
+
+  .status {
+    flex-basis: 10%;
+    @extend %full-flex-center;
+    padding: 0.8rem;
+
+    & > span {
+      color: $color-gray-dark;
+      border-bottom: 1px dotted $color-gray-light;
+    }
+  }
+
+  .action {
+    padding: 0.8rem;
+    flex-basis: 10%;
+    @extend %full-flex-center;
+
+    & > button {
+      width: 8rem;
+      height: 3rem;
+      font-size: 1.2rem;
+    }
+  }
+}

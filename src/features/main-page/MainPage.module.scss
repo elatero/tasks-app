@@ -83,6 +83,8 @@
         .caption {
           text-align: center;
           margin-bottom: 2rem;
+          text-transform: uppercase;
+          font-style: italic;
         }
 
         .content {
@@ -93,93 +95,39 @@
             display: flex;
             justify-content: space-between;
             border-bottom: $border-color-primary;
+            border-top: $border-color-primary;
             margin-bottom: 1rem;
-          }
-
-          .task {
-            display: flex;
-            width: 100%;
-            border: $border-color-primary;
-            border-radius: 3px;
-            min-height: 12rem;
-            font-size: 1.4rem;
+            padding: 0.5rem 0;
 
             & > *:not(:last-of-type) {
               border-right: $border-color-primary;
             }
-          }
 
-          .number {
-            flex-basis: 5%;
-            text-align: center;
-            @extend %full-flex-center;
-
-            &__caption {
+            .number {
               flex-basis: 5%;
               text-align: center;
             }
-          }
 
-          .description {
-            flex-basis: 35%;
-            padding: 0.8rem;
-            @extend %full-flex-center;
-
-            &__caption {
+            .description {
               flex-basis: 35%;
               font-size: 1.4rem;
               text-align: center;
             }
-          }
 
-          .author,
-          .email {
-            flex-basis: 15%;
-            @extend %full-flex-center;
-            padding: 0.8rem;
-
-            & > span {
-              margin-left: 0.5rem;
-              color: $color-gray-dark;
-              border-bottom: 1px dotted $color-gray-light;
-            }
-
-            &__caption {
+            .author,
+            .email {
               text-align: center;
               flex-basis: 15%;
             }
-          }
 
-          .status {
-            flex-basis: 10%;
-            @extend %full-flex-center;
-            padding: 0.8rem;
-
-            & > span {
-              color: $color-gray-dark;
-              border-bottom: 1px dotted $color-gray-light;
-            }
-
-            &__caption {
-              flex-basis: 10%;
-              text-align: center;
-            }
-          }
-
-          .action {
-            padding: 0.8rem;
-            flex-basis: 10%;
-            @extend %full-flex-center;
-
-            &__caption {
+            .status {
               flex-basis: 10%;
               text-align: center;
             }
 
-            & > button {
-              width: 8rem;
-              height: 3rem;
-              font-size: 1.2rem;
+            .action {
+              flex-basis: 10%;
+              text-align: center;
             }
           }
         }
