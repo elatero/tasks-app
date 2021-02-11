@@ -1,1 +1,5 @@
 export { default as MainPage } from './MainPage'
+export * as actions from './actions'
+export { default as reducer } from './reducer'
+export * as actionTypes from './actionTypes'
+export * as types from './types'

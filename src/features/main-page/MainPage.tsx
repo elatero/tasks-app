@@ -1,13 +1,20 @@
+import { useEffect } from 'react'
 import { RouteChildrenProps } from 'react-router'
 
+import { connector, PropsFromRedux } from './container'
 import { TaskItem } from './components'
 
 import styles from './MainPage.module.scss'
 
-type Props = RouteChildrenProps
+type Props = RouteChildrenProps & PropsFromRedux
 
 const MainPage = (props: Props) => {
-  console.log(props)
+  const { fetchTasksList } = props
+
+  useEffect(() => {
+    fetchTasksList()
+  })
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -46,4 +53,4 @@ const MainPage = (props: Props) => {
   )
 }
 
-export default MainPage
+export default connector(MainPage)
