@@ -10,7 +10,7 @@ import styles from './MainPage.module.scss'
 type Props = RouteChildrenProps & PropsFromRedux
 
 const MainPage = (props: Props) => {
-  const { fetchTasksList, taskList } = props
+  const { fetchTasksList, taskList, totalTasksCount } = props
 
   useEffect(() => {
     fetchTasksList()
@@ -47,14 +47,22 @@ const MainPage = (props: Props) => {
                 <p className={styles.action}>Remove Task:</p>
               </div>
               {taskList ? (
-                taskList.map((task) => {
-                  return <TaskItem key={task.id} task={task} />
-                })
+                <>
+                  <div>
+                    {taskList.map((task) => (
+                      <TaskItem key={task.id} task={task} />
+                    ))}
+                  </div>
+                  <div className={styles.pagination}>
+                    <div>
+                      Pagination {taskList.length} of {totalTasksCount}
+                    </div>
+                  </div>
+                </>
               ) : (
                 <Loader />
               )}
             </div>
-            <div className={styles.pagination}>Pagination</div>
           </div>
         </div>
       </div>

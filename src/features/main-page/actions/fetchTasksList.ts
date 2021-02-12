@@ -13,6 +13,7 @@ type Response = {
 
 type Payload = {
   taskList: TaskItem[]
+  total_task_count: string
 }
 
 export type FetchTasksListAction = FSA<undefined, Payload, string>
@@ -33,7 +34,7 @@ export const fetchTasksList: FetchTasksList = () => async (dispatch) => {
 
     dispatch({
       type: t.FETCH_TASKS_LIST,
-      payload: { taskList: data.message.tasks },
+      payload: { taskList: data.message.tasks, total_task_count: data.message.total_task_count },
       meta: { done: true },
     })
   } catch (error) {

@@ -17,6 +17,7 @@ export type TaskItem = {
 
 export type MainPageState = {
   taskList: TaskItem[] | null
+  total_task_count: string | number
   loading: boolean
   errorMessage: string
 }

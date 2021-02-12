@@ -8,10 +8,12 @@ import { TaskItem } from './types'
 
 type OwnProps = {
   taskList: TaskItem[] | null
+  totalTasksCount: string | number
 }
 
 const mapStateToProps = createStructuredSelector<ReduxState, OwnProps>({
   taskList: selectors.taskListSelector,
+  totalTasksCount: selectors.totalTasksCountSelector,
 })
 
 const mapDispatchToProps = {

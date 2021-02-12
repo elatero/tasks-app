@@ -8,6 +8,7 @@ import { MainPageState } from './types'
 
 const initState: MainPageState = {
   taskList: null,
+  total_task_count: 0,
   loading: false,
   errorMessage: '',
 }
@@ -20,6 +21,7 @@ const reducer = createReducer(initState, {
 
       if (action.meta && action.meta.done && action.payload && typeof action.payload !== 'string') {
         draft.taskList = action.payload.taskList
+        draft.total_task_count = action.payload.total_task_count
       }
 
       if (!action.meta && action.payload && typeof action.payload === 'string') {
