@@ -18,5 +18,5 @@ export type TaskItem = {
 export type MainPageState = {
   taskList: TaskItem[] | null
   loading: boolean
-  error?: string
+  errorMessage: string
 }

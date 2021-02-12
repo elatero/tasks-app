@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { RouteChildrenProps } from 'react-router'
 
+import { Loader } from 'componets'
 import { connector, PropsFromRedux } from './container'
 import { TaskItem } from './components'
 
@@ -9,11 +10,11 @@ import styles from './MainPage.module.scss'
 type Props = RouteChildrenProps & PropsFromRedux
 
 const MainPage = (props: Props) => {
-  const { fetchTasksList } = props
+  const { fetchTasksList, taskList } = props
 
   useEffect(() => {
     fetchTasksList()
-  })
+  }, [])
 
   return (
     <div className={styles.wrapper}>
@@ -37,6 +38,7 @@ const MainPage = (props: Props) => {
             <div className={styles.content}>
               <div className={styles.tableHead}>
                 <p className={styles.number}>Task:</p>
+                <p className={styles.image}>Image:</p>
                 <p className={styles.description}>Description Task:</p>
                 <p className={styles.author}>Autor:</p>
                 <p className={styles.email}>Email:</p>
@@ -44,8 +46,15 @@ const MainPage = (props: Props) => {
                 <p className={styles.action}>Edit Task:</p>
                 <p className={styles.action}>Remove Task:</p>
               </div>
-              {<TaskItem />}
+              {taskList ? (
+                taskList.map((task) => {
+                  return <TaskItem key={task.id} task={task} />
+                })
+              ) : (
+                <Loader />
+              )}
             </div>
+            <div className={styles.pagination}>Pagination</div>
           </div>
         </div>
       </div>

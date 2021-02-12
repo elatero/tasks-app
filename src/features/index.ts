@@ -1,3 +1,3 @@
-import * as Main from './main-page'
+import * as MainPage from './main-page'
 
-export default { Main }
+export default { MainPage }

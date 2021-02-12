@@ -1,0 +1,13 @@
+@import 'assets/scss/abstracts/variables';
+@import 'assets/scss/base/utilities';
+@import 'assets/scss/layout/grid';
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  @extend %full-flex-center;
+
+  & > img {
+    display: block;
+  }
+}
