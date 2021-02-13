@@ -7,7 +7,12 @@
 /// ////////////////////////////////////////////////////////////////////////////////
 
 export type CreatePageState = {
-  username: string
-  email: string
-  task: string
+  data: {
+    username: string
+    email: string
+    task: string
+  }
+  loading: boolean
+  errorMessage: string
+  status?: string
 }

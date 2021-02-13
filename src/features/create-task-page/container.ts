@@ -4,18 +4,24 @@ import { ReduxState } from 'store/createRootReducer'
 import * as actions from './actions'
 import * as selectors from './selectors'
 
-import { CreatePageState } from './types'
-
 type OwnProps = {
-  data: CreatePageState
+  data: {
+    username: string
+    email: string
+    task: string
+  }
+  statusCreateTask?: string
 }
 
 const mapStateToProps = createStructuredSelector<ReduxState, OwnProps>({
-  data: selectors.createPageStateSelector,
+  data: selectors.dataTaskSelector,
+  statusCreateTask: selectors.statusCreateSelector,
 })
 
 const mapDispatchToProps = {
   onChangeFormData: actions.changeFormData,
+  onCreateTask: actions.onCreateTask,
+  clearStatus: actions.clearStatus,
 }
 
 export const connector = connect(mapStateToProps, mapDispatchToProps)

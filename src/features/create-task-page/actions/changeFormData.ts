@@ -8,7 +8,6 @@ export type ChangeFormDataAction = BaseFSA<Payload>
 type ChangeFormData = (name: string, value: string) => ChangeFormDataAction
 
 export const changeFormData: ChangeFormData = (name, value) => {
-  console.log(name, value)
   if (name === 'username') {
     return {
       type: t.CHANGE_USERNAME_DATE,
