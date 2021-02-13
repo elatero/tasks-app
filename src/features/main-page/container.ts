@@ -9,15 +9,26 @@ import { TaskItem } from './types'
 type OwnProps = {
   taskList: TaskItem[] | null
   totalTasksCount: string | number
+  sortTasksList: string
+  totalPages: number
+  currentPage: number
+  numberPages: Array<number>
 }
 
 const mapStateToProps = createStructuredSelector<ReduxState, OwnProps>({
   taskList: selectors.taskListSelector,
   totalTasksCount: selectors.totalTasksCountSelector,
+  sortTasksList: selectors.sortTasksListSelector,
+  totalPages: selectors.totalPagesSelector,
+  currentPage: selectors.currentPageSelector,
+  numberPages: selectors.numberPagesSelector,
 })
 
 const mapDispatchToProps = {
   fetchTasksList: actions.fetchTasksList,
+  onSortType: actions.onSortType,
+  nextPage: actions.nextPage,
+  prevPage: actions.prevPage,
 }
 
 export const connector = connect(mapStateToProps, mapDispatchToProps)

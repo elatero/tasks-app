@@ -1,3 +1,7 @@
-export { mainPageStateSelector } from './MainPageStateSelector'
+export { mainPageStateSelector } from './mainPageStateSelector'
 export { taskListSelector } from './taskListSelector'
 export { totalTasksCountSelector } from './totalTaskCountSelector'
+export { sortTasksListSelector } from './sortTasksListSelector'
+export { totalPagesSelector } from './totalPagesSelector'
+export { currentPageSelector } from './currentPageSelector'
+export { numberPagesSelector } from './numberPagesSelector'

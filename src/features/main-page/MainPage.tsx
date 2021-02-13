@@ -10,11 +10,21 @@ import styles from './MainPage.module.scss'
 type Props = RouteChildrenProps & PropsFromRedux
 
 const MainPage = (props: Props) => {
-  const { fetchTasksList, taskList, totalTasksCount } = props
+  const {
+    fetchTasksList,
+    taskList,
+    totalTasksCount,
+    currentPage,
+    sortTasksList,
+    totalPages,
+    nextPage,
+    prevPage,
+    onSortType,
+  } = props
 
   useEffect(() => {
-    fetchTasksList()
-  }, [])
+    fetchTasksList(currentPage, sortTasksList)
+  }, [currentPage, sortTasksList])
 
   return (
     <div className={styles.wrapper}>
@@ -26,7 +36,8 @@ const MainPage = (props: Props) => {
             </button>
             <div className={styles.sort}>
               Sorting by:
-              <select className={styles.select}>
+              <select className={styles.select} value={sortTasksList} onChange={(e) => onSortType(e.target.value)}>
+                <option value="id">default</option>
                 <option value="username">username</option>
                 <option value="email">email</option>
                 <option value="status">status task</option>
@@ -35,6 +46,7 @@ const MainPage = (props: Props) => {
           </div>
           <div className={styles.listTasks}>
             <h3 className={styles.caption}>List Tasks</h3>
+            <p className={styles.totalTask}>Total tasks: {totalTasksCount || 0}</p>
             <div className={styles.content}>
               <div className={styles.tableHead}>
                 <p className={styles.number}>Task:</p>
@@ -54,8 +66,15 @@ const MainPage = (props: Props) => {
                     ))}
                   </div>
                   <div className={styles.pagination}>
-                    <div>
-                      Pagination {taskList.length} of {totalTasksCount}
+                    <div className={styles.pagination__inner}>
+                      <span className={styles.pagination__prev} onClick={() => prevPage(currentPage, totalPages)}>
+                        &#8249; prev
+                      </span>
+                      <span className={styles.pagination__currentPage}>{currentPage}</span> of{' '}
+                      <span className={styles.pagination__totalPages}>{totalPages}</span> pages
+                      <span className={styles.pagination__next} onClick={() => nextPage(currentPage, totalPages)}>
+                        next &#8250;
+                      </span>
                     </div>
                   </div>
                 </>

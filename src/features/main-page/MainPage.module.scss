@@ -88,6 +88,11 @@
           font-style: italic;
         }
 
+        .totalTask {
+          text-align: right;
+          margin-bottom: 0.5rem;
+        }
+
         .content {
           display: flex;
           flex-direction: column;
@@ -144,6 +149,44 @@
           display: flex;
           justify-content: center;
           margin-top: 3.5rem;
+
+          &__inner {
+            @extend %full-flex-center;
+          }
+
+          &__prev,
+          &__next {
+            @extend %full-flex-center;
+            color: $color-gray-light;
+            cursor: pointer;
+            transition: 0.3s all;
+
+            &:hover {
+              color: $background-primary;
+            }
+          }
+
+          &__prev {
+            margin-right: 1.5rem;
+          }
+
+          &__next {
+            margin-left: 1.5rem;
+          }
+
+          &__currentPage {
+            @extend %full-flex-center;
+            border-bottom: $border-color-primary;
+            font-weight: 600;
+            color: $color-gray-dark;
+            margin-right: 1rem;
+          }
+
+          &__totalPages {
+            margin: 0 1rem;
+            font-weight: 600;
+            color: $color-gray-dark;
+          }
         }
       }
     }

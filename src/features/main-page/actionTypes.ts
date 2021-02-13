@@ -1,1 +1,4 @@
 export const FETCH_TASKS_LIST = 'FETCH_TASKS_LIST'
+export const SORT_TYPE_TASKS_LIST = 'SORT_TYPE_TASKS_LIST'
+export const NEXT_PAGE = 'NEXT_PAGE'
+export const PREV_PAGE = 'PREV_PAGE'

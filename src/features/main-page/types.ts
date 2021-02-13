@@ -20,4 +20,7 @@ export type MainPageState = {
   total_task_count: string | number
   loading: boolean
   errorMessage: string
+  sortTasksType: string
+  currentPage: number
+  totalPage: Array<number | string>
 }

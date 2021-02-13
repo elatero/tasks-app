@@ -10,9 +10,7 @@ export const TaskItem = (props: Props) => {
   return (
     <div className={styles.task}>
       <div className={styles.number}>{id}</div>
-      <div className={styles.image}>
-        <img src={image_path} alt="image" />
-      </div>
+      <div className={styles.image}>{image_path ? <img src={image_path} alt="image" /> : 'No Photo'}</div>
       <div className={styles.description}>
         <p className={styles.description__text}>{text}</p>
       </div>

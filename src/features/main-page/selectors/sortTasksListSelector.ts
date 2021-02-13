@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
 import { mainPageStateSelector } from './mainPageStateSelector'
 import { ReduxState } from 'store/createRootReducer'
-import { MainPageState, TaskItem } from '../types'
+import { MainPageState } from '../types'
 
-export const taskListSelector = createSelector<ReduxState, MainPageState, TaskItem[] | null>(
+export const sortTasksListSelector = createSelector<ReduxState, MainPageState, string>(
   mainPageStateSelector,
-  (state) => state.taskList
+  (state) => state.sortTasksType
 )
