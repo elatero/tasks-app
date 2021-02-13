@@ -20,6 +20,7 @@ const MainPage = (props: Props) => {
     nextPage,
     prevPage,
     onSortType,
+    history,
   } = props
 
   useEffect(() => {
@@ -31,7 +32,13 @@ const MainPage = (props: Props) => {
       <div className={styles.container}>
         <div className={styles.inner}>
           <div className={styles.panel}>
-            <button className={styles.button} type="button">
+            <button
+              className={styles.button}
+              type="button"
+              onClick={() => {
+                history.push({ pathname: 'create' })
+              }}
+            >
               Create Task
             </button>
             <div className={styles.sort}>

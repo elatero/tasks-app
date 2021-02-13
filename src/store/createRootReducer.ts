@@ -5,18 +5,21 @@ import { History } from 'history'
 import features from 'features'
 
 import { MainPageState } from 'features/main-page/types'
+import { CreatePageState } from 'features/create-task-page/types'
 
 export type ReduxState = {
   router: RouterState
   main: MainPageState
+  createPage: CreatePageState
 }
 
 const createRootReducer = (history: History) =>
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   combineReducers<ReduxState>({
     router: connectRouter(history),
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     main: features.MainPage.reducer,
+    createPage: features.CreateTaskPage.reducer,
   })
 
 export default createRootReducer

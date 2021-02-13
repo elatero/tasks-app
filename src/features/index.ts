@@ -1,3 +1,4 @@
 import * as MainPage from './main-page'
+import * as CreateTaskPage from './create-task-page'
 
-export default { MainPage }
+export default { MainPage, CreateTaskPage }

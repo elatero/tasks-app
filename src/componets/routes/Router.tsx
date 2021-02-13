@@ -9,6 +9,7 @@ export const Router = () => {
     <Layout>
       <Switch>
         <PublicRoute path="/" exact component={features.MainPage.MainPage} />
+        <PublicRoute path="/create" component={features.CreateTaskPage.CreateTaskPage} />
       </Switch>
     </Layout>
   )

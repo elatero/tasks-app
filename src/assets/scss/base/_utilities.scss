@@ -3,3 +3,23 @@
   align-items: center;
   justify-content: center;
 }
+
+%button-brimary {
+  width: 100%;
+  max-width: 19rem;
+  height: 4.5rem;
+  background-color: $background-primary;
+  border-radius: 5px;
+  border: $border-color-primary;
+  color: $color-white;
+  transition: all 0.3s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: $color-white;
+    color: $background-primary;
+  }
+}
