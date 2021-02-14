@@ -1,12 +1,22 @@
-import { FC } from 'react'
-import { Redirect, Route, RouteProps } from 'react-router-dom'
-import { connect, ConnectedProps, ConnectedComponent } from 'react-redux'
+import { ComponentType } from 'react'
+import { Redirect, Route, RouteProps, RouteComponentProps } from 'react-router-dom'
+import { connect, ConnectedProps } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+
+import features from 'features'
+
 import { ReduxState } from 'store/createRootReducer'
 
 type OtherProps = RouteProps & {
-  component: FC | ConnectedComponent<any, any>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  component: ComponentType<RouteComponentProps<any>> | ComponentType<any>
 }
 
+type OwnProps = {
+  user: null | string
+}
+
+// eslint-disable-next-line no-use-before-define
 type Props = PropsFromRedux & OtherProps
 
 const ProtectedRoute = (props: Props) => {
@@ -18,13 +28,16 @@ const ProtectedRoute = (props: Props) => {
         if (user) {
           return <Component {...props} />
         }
-        return <Redirect to="/login" />
+        return <Redirect to="/auth" />
       }}
     />
   )
 }
 
-const mapStateToProps = (state: ReduxState) => ({ user: state })
+const mapStateToProps = createStructuredSelector<ReduxState, OwnProps>({
+  user: features.AuthPage.selectors.userStateSelector,
+})
+
 const mapDispatchToProps = {}
 
 const connector = connect(mapStateToProps, mapDispatchToProps)

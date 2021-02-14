@@ -1,7 +1,7 @@
 import features from 'features'
-import { Switch } from 'react-router-dom'
+import { Switch, Redirect } from 'react-router-dom'
 import PublicRoute from './PublicRoute'
-// import ProtectedRoute from './ProtectedRoute'
+import ProtectedRoute from './ProtectedRoute'
 import Layout from '../layout'
 
 export const Router = () => {
@@ -10,6 +10,9 @@ export const Router = () => {
       <Switch>
         <PublicRoute path="/" exact component={features.MainPage.MainPage} />
         <PublicRoute path="/create" component={features.CreateTaskPage.CreateTaskPage} />
+        <PublicRoute path="/auth" component={features.AuthPage.AuthPage} />
+        <ProtectedRoute path="/edit/:id" component={features.EditTaskPage.EditTaskPage} />
+        <Redirect to="/" />
       </Switch>
     </Layout>
   )

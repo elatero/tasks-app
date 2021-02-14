@@ -69,7 +69,7 @@ const MainPage = (props: Props) => {
                 <>
                   <div>
                     {taskList.map((task) => (
-                      <TaskItem key={task.id} task={task} />
+                      <TaskItem key={task.id} task={task} history={history} />
                     ))}
                   </div>
                   <div className={styles.pagination}>

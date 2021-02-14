@@ -1,11 +1,16 @@
+import { History } from 'history'
+
 import styles from './TaskItem.module.scss'
 
 import { TaskItem as TaskItemType } from '../../types'
 
-type Props = { task: TaskItemType }
+type Props = { task: TaskItemType; history: History }
 
 export const TaskItem = (props: Props) => {
-  const { id, text, username, email, status, image_path } = props.task
+  const {
+    task: { id, text, username, email, status, image_path },
+    history,
+  } = props
 
   return (
     <div className={styles.task}>
@@ -24,7 +29,13 @@ export const TaskItem = (props: Props) => {
         <span>{status}</span>
       </div>
       <div className={styles.action}>
-        <button>edit</button>
+        <button
+          onClick={() => {
+            history.push({ pathname: `edit/${id}`, state: { id, email, username, text } })
+          }}
+        >
+          edit
+        </button>
       </div>
       <div className={styles.action}>
         <button>remove</button>
