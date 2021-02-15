@@ -11,7 +11,7 @@ type Response = {
 
 type Payload = {
   status: 'ok' | 'error'
-  user: string
+  token: string
 }
 
 export type AuthAction = FSA<undefined, Payload, string>
@@ -36,11 +36,9 @@ export const onAuth: OnAuth = (username, password) => async (dispatch) => {
       throw new Error('Response body is empty!')
     }
 
-    localStorage.setItem('token', data.message.token)
-    console.log(data)
     dispatch({
       type: t.AUTH,
-      payload: { status: data.status, user: username },
+      payload: { status: data.status, token: data.message.token },
       meta: { done: true },
     })
   } catch (error) {

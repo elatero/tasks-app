@@ -13,7 +13,7 @@ type OtherProps = RouteProps & {
 }
 
 type OwnProps = {
-  user: null | string
+  user: boolean
 }
 
 // eslint-disable-next-line no-use-before-define

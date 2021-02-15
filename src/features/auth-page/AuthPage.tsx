@@ -17,7 +17,8 @@ const AuthPage = (props: Props) => {
   }, [statusAuth])
 
   useEffect(() => {
-    if (statusAuth === 'ok') {
+    if (userAuth) {
+      console.log('object')
       history.push({ pathname: '/' })
     }
   }, [userAuth])

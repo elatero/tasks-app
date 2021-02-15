@@ -3,3 +3,4 @@ export const CHANGE_PASSWORD_DATA = 'CHANGE_PASSWORD_DATA'
 
 export const AUTH = 'AUTH'
 export const CLEAR_STATUS = 'CLEAR_STATUS'
+export const SIGN_OUT = 'SIGN_OUT'

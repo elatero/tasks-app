@@ -10,7 +10,7 @@ type OwnProps = {
     password: string
   }
   statusAuth?: string
-  userAuth: string | null
+  userAuth: boolean
 }
 
 const mapStateToProps = createStructuredSelector<ReduxState, OwnProps>({

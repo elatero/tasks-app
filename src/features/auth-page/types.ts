@@ -7,7 +7,7 @@
 /// ////////////////////////////////////////////////////////////////////////////////
 
 export type AuthPageState = {
-  user: null | string
+  user: boolean
   UIState: {
     username: string
     password: string

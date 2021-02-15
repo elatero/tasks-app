@@ -6,8 +6,10 @@ import * as t from './actionTypes'
 import { ChangeFormDataAction, AuthAction } from './actions'
 import { AuthPageState } from './types'
 
+const token = localStorage.getItem('token')
+
 const initState: AuthPageState = {
-  user: null,
+  user: !!token,
   UIState: {
     username: '',
     password: '',
@@ -24,9 +26,13 @@ const reducer = createReducer(initState, {
 
       if (action.meta && action.meta.done && action.payload && typeof action.payload !== 'string') {
         draft.status = action.payload.status
-        draft.user = action.payload.user
         draft.UIState.password = ''
         draft.UIState.username = ''
+
+        if (action.payload.token) {
+          localStorage.setItem('token', action.payload.token)
+          draft.user = true
+        }
       }
 
       if (!action.meta && action.payload && typeof action.payload === 'string') {
@@ -48,6 +54,12 @@ const reducer = createReducer(initState, {
   [t.CLEAR_STATUS]: (state) =>
     produce(state, (draft) => {
       draft.status = ''
+    }),
+  [t.SIGN_OUT]: (state) =>
+    produce(state, (draft) => {
+      localStorage.clear()
+      sessionStorage.clear()
+      draft.user = false
     }),
 })
 

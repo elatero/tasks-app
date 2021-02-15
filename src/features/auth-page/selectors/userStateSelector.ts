@@ -3,7 +3,7 @@ import { authPageStateSelector } from './authPageStateSelector'
 import { ReduxState } from 'store/createRootReducer'
 import { AuthPageState } from '../types'
 
-export const userStateSelector = createSelector<ReduxState, AuthPageState, string | null>(
+export const userStateSelector = createSelector<ReduxState, AuthPageState, boolean>(
   authPageStateSelector,
   (state) => state.user
 )
