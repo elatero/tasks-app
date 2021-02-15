@@ -27,7 +27,7 @@ type OnUpdateTask = (
 
 export const onUpdateTask: OnUpdateTask = (username, email, task, id) => async (dispatch) => {
   dispatch({
-    type: t.CREATE_TASK,
+    type: t.EDIT_TASK,
     meta: { done: false },
   })
 
@@ -53,13 +53,13 @@ export const onUpdateTask: OnUpdateTask = (username, email, task, id) => async (
     console.log(data)
 
     dispatch({
-      type: t.CREATE_TASK,
+      type: t.EDIT_TASK,
       payload: { status: data.status },
       meta: { done: true },
     })
   } catch (error) {
     dispatch({
-      type: t.CREATE_TASK,
+      type: t.EDIT_TASK,
       payload: error.message,
       error: true,
     })

@@ -24,7 +24,7 @@ const reducer = createReducer(initState, {
         draft.data.task = action.payload.data.task
       }
     }),
-  [t.CREATE_TASK]: (state, action: UpdateTaskAction) =>
+  [t.EDIT_TASK]: (state, action: UpdateTaskAction) =>
     produce(state, (draft) => {
       if (!(action.meta && action.meta.done)) {
         draft.errorMessage = ''
@@ -32,9 +32,11 @@ const reducer = createReducer(initState, {
 
       if (action.meta && action.meta.done && action.payload && typeof action.payload !== 'string') {
         draft.status = action.payload.status
-        // draft.data.username = ''
-        // draft.data.email = ''
-        // draft.data.task = ''
+
+        if (action.payload.status === 'error') {
+          localStorage.clear()
+          sessionStorage.clear()
+        }
       }
 
       if (!action.meta && action.payload && typeof action.payload === 'string') {
