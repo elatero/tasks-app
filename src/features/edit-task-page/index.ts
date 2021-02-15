@@ -1,3 +1,6 @@
 export { default as EditTaskPage } from './EditTaskPage'
 export { default as reducer } from './reducer'
 export * as selectors from './selectors'
+export * as actions from './actions'
+export * as actionTypes from './actionTypes'
+export * as types from './types'

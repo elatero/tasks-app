@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
 import * as t from '../actionTypes'
+import * as auth from 'features/auth-page/actionTypes'
 import settings from 'config/settings'
 
 type Response = {
@@ -50,13 +51,19 @@ export const onUpdateTask: OnUpdateTask = (username, email, task, id) => async (
       throw new Error('Response body is empty!')
     }
 
-    console.log(data)
-
     dispatch({
       type: t.EDIT_TASK,
       payload: { status: data.status },
       meta: { done: true },
     })
+
+    if (data.status === 'error') {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      dispatch({
+        type: auth.SIGN_OUT,
+      })
+    }
   } catch (error) {
     dispatch({
       type: t.EDIT_TASK,
